@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("room_description", 250);
             $table->unsignedBigInteger("game_id");
             $table->timestamps();
-            $table->foreign("game_id")->references("id")->on("games");
+            $table->foreign("game_id")->references("id")->on("games")->onUpdate("cascade")->onDelete("cascade");
         });
     }
 
