@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nickname', 50)->unique();
             $table->string('full_name', 100);
             $table->string('email', 50)->unique();
-            $table->string('password', 16);
+            $table->string('password');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
