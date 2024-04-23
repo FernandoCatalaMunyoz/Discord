@@ -27,9 +27,14 @@ return new class extends Migration
             $table->string("room_name");
             $table->string("room_description", 250);;
             $table->unsignedBigInteger("game_id");
+            $table->unsignedBigInteger("owner");
             $table->timestamps();
             $table->foreign("game_id")->references("id")->on("games")->onUpdate("cascade")->onDelete("cascade");
+<<<<<<< HEAD
 >>>>>>>> origin/develop:database/migrations/2024_04_22_160711_create_rooms_table.php
+=======
+            $table->foreign("owner")->references("id")->on("users")->onUpdate("cascade")->onDelete("cascade");
+>>>>>>> 34383a8c19cf436c6da003a19e4f0810de76e0e4
         });
     }
 
