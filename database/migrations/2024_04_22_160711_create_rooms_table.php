@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string("room_name");
             $table->string("room_description", 250);;
             $table->unsignedBigInteger("game_id");
+            $table->unsignedBigInteger("owner");
             $table->timestamps();
             $table->foreign("game_id")->references("id")->on("games")->onUpdate("cascade")->onDelete("cascade");
+            $table->foreign("owner")->references("id")->on("users")->onUpdate("cascade")->onDelete("cascade");
         });
     }
 
