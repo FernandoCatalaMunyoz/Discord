@@ -37,6 +37,14 @@ class GameController extends Controller
     public function createGAme(Request $request)
     {
         try {
+            $validated = $request->validate([
+                "game_name" => "required|max:50",
+                "description" => "required|String",
+                "game_image" => "required"
+            ]);
+
+
+
             $game = new Game;
             $game->game_name = $request->input('game_name');
             $game->description = $request->input('description');
@@ -66,6 +74,11 @@ class GameController extends Controller
     public function updateGame(Request $request, $id)
     {
         try {
+            $validated = $request->validate([
+                "game_name" => "required|max:50",
+                "description" => "required|String",
+                "game_image" => "required"
+            ]);
             $game = Game::find($id);
             if ($request->input('game_name')) {
                 $game->game_name = $request->input('game_name');
