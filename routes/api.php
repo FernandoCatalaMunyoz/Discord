@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
 Route::get('/games', [GameController::class, 'getAllGames']); // (ruta,[controlardor::class,nombre funcion])
 Route::post('/games', [GameController::class, 'createGame']); // (ruta,[controlardor::class,nombre funcion])
 Route::put('/games/{id}', [GameController::class, 'updateGame']); // (ruta,[controlardor::class,nombre funcion])
@@ -30,23 +32,5 @@ Route::delete('/games/{id}', [GameController::class, 'deleteGame']); // (ruta,[c
 
 Route::post('/rooms/{id}', [RoomController::class, 'createRoom']);
 Route::put('/rooms/{id}', [RoomController::class, 'updateRoom']);
-
-
-
-
-Route::post('/taks', function (
-    Request $request
-) {
-    dump($request->input()); // asi recuperas lo qu ele envias por boy a traves del cliente
-    dump($request->input("campo1")); // asi recuperas lo qu ele envias por boy a traves del cliente del campo 1
-
-    $title = $request->input("campo1");
-
-    return 'create TASK';
-});
-Route::put('/taks{$id}', function ($id) {
-    return 'update TASK ' . $id;
-});
-Route::delete('/taks{$id}', function ($id) {
-    return 'delete TASK ' . $id;
-});
+Route::delete('/rooms/{id}', [RoomController::class, 'deleteRoom']);
+Route::get('/rooms', [RoomController::class, 'getAllRooms']);

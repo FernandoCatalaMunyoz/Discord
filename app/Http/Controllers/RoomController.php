@@ -72,4 +72,65 @@ class RoomController extends Controller
             );
         }
     }
+
+    public function deleteRoom(Request $request, $room_id)
+    {
+        try {
+            $room = Room::find($room_id);
+            $userId = $request->input("user_id");
+
+            if ($userId !== $room->owner) {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'message' => "you cant remove this room",
+
+                    ],
+                    500
+                );
+            }
+            $room->delete();
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => "Room deleted succesfully",
+                    'data' => $room
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "Room cant be deleted",
+                    'error' => $th->getMessage() // $th esun objeto del que cogemos el getter getMessage()
+                ],
+                500
+            );
+        }
+    }
+
+    public function getAllRooms()
+    {
+        try {
+            $rooms = Room::all();
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => "Rooms retrieved succesfully",
+                    'data' => $rooms
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "Rooms cant be retrieved",
+                    'error' => $th->getMessage()()
+                ],
+                500
+            );
+        }
+    }
 }
