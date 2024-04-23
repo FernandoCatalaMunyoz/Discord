@@ -42,6 +42,44 @@ class UserRoomController extends Controller
             );
         }
     }
+
+    public function deleteUser($id)
+    {
+        try {
+            $userRoom = UserRoom::find($id);
+
+            if ($userRoom == null) {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'message' => "UserRoom not found",
+                        'error' => "404"
+                    ],
+                    404
+                );
+            }
+
+            $userRoom->delete();
+
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => "User deleted from room succesfully",
+                    'data' => $userRoom
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "User cant be deleted from room",
+                    'error' => $th->getMessage()
+                ],
+                500
+            );
+        }
+    }
 }
 
 
