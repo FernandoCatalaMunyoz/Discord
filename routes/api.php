@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\GameController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,14 @@ Route::get('/games', [GameController::class, 'getAllGames']); // (ruta,[controla
 Route::post('/games', [GameController::class, 'createGame']); // (ruta,[controlardor::class,nombre funcion])
 Route::put('/games/{id}', [GameController::class, 'updateGame']); // (ruta,[controlardor::class,nombre funcion])
 Route::delete('/games/{id}', [GameController::class, 'deleteGame']); // (ruta,[controlardor::class,nombre funcion])
+
+Route::get('/messages', [MessageController::class, 'getAllMessages']); 
+
+Route::post('/messages/{room_id}', [MessageController::class, 'createMessage']); 
+
+Route::put('/messages/{id}', [MessageController::class, 'updateMessage']);
+
+Route::delete('/messages/{id}', [MessageController::class, 'deleteMessage']);
 
 
 

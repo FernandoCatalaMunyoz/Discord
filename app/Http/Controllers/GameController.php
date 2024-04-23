@@ -8,12 +8,11 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class GameController extends Controller
 {
-    //Creamos aqui las funciones de cada empoint
-
+    
     public function getAllGames()
     {
         try {
-            $games = Game::all(); // devuelve coleccion con todos los registros de Games
+            $games = Game::all(); 
 
             return response()->json(
                 [
