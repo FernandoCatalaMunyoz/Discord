@@ -16,8 +16,14 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            GamesSeeder::class
+
         ]);
         \App\Models\User::factory(10)->create();
+        \App\Models\Game::factory(20)->create();
+        $this->call([
+
+            GamesSeeder::class,
+            RoomsSeeder::class
+        ]);
     }
 }
