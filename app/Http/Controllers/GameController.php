@@ -34,7 +34,7 @@ class GameController extends Controller
             );
         }
     }
-    public function createGAme(Request $request)
+    public function createGame(Request $request)
     {
         try {
             $validated = $request->validate([
