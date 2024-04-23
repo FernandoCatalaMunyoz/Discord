@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,9 @@ class UserSeeder extends Seeder
                 'fullName' => 'super_admin',
                 'email' => 'super_admin@super_admin.com',
                 'password' => Hash::make('123456'),
-                'role' => 'super_admin'
+                'role' => 'super_admin',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
 
         );
