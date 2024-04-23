@@ -85,4 +85,28 @@ class UserController extends Controller
         }
     }
 
+    ////////////////     METHOD DELETE     ///////////////
+    public function deleteUser($id){
+        try{
+            $user = User::find($id);
+            $user->delete();
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => "User deleted succesfully",
+                    'data' => $user
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "User cant be created",
+                    'error' => $th->getMessage() // $th esun objeto del que cogemos el getter getMessage()
+                ],
+                500
+            );
+        }
+    }
 }
