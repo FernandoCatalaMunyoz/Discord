@@ -21,6 +21,7 @@ class RoomsSeeder extends Seeder
                 'room_name' => 'Fornite-1',
                 'room_description' => 'Rat kids room',
                 'game_id' => 1,
+                'owner' => rand(2, 10),
                 'created_at' => now(),
                 'updated_at' => now()
 

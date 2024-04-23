@@ -20,8 +20,8 @@ class GameFactory extends Factory
             'game_name' => $this->faker->name(),
             'description' => $this->faker->name(),
             'game_image' => $this->faker->unique()->safeEmail(),
-            // 'game_id'=>rand(1,"hasta el numero de id maximo de juegos")
 
+            // 'game_id'=>rand(1,"hasta el numero de id maximo de juegos")
         ];
     }
 }
