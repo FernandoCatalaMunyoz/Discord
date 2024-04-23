@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/profile/{id}', [UserController::class, 'getMyProfile']);
+route::update('/update/{id}', [UserController::class, 'updateUser']);
 Route::get('/games', [GameController::class, 'getAllGames']); // (ruta,[controlardor::class,nombre funcion])
 Route::post('/games', [GameController::class, 'createGame']); // (ruta,[controlardor::class,nombre funcion])
 Route::put('/games/{id}', [GameController::class, 'updateGame']); // (ruta,[controlardor::class,nombre funcion])
