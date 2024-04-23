@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\RoomController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +27,9 @@ Route::put('/games/{id}', [GameController::class, 'updateGame']); // (ruta,[cont
 Route::delete('/games/{id}', [GameController::class, 'deleteGame']); // (ruta,[controlardor::class,nombre funcion])
 
 
+
+Route::post('/rooms/{id}', [RoomController::class, 'createRoom']);
+Route::put('/rooms/{id}', [RoomController::class, 'updateRoom']);
 
 
 
