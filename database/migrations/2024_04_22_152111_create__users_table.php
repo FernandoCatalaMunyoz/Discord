@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->morphs('tokenable');
-            $table->string('name');
-            $table->string('token', 64)->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
+            $table->string("nickName", 50)->unique();
+            $table->string("fullName", 50);
+            $table->string("email", 50)->unique();
+            $table->string("password");
+            $table->enum('role', ["super_admin", "admin", "user"])->default("user");
+            $table->boolean("is_active")->default(true); //preguntar esto
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personal_access_tokens');
+        Schema::dropIfExists('users');
     }
 };
