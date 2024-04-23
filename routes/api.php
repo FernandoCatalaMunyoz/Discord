@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ Route::put('/messages/{id}', [MessageController::class, 'updateMessage']);
 
 Route::delete('/messages/{id}', [MessageController::class, 'deleteMessage']);
 
+Route::post('/auth/register', [AuthController::class, 'register']);
 
 
 
