@@ -1,64 +1,158 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# LFG Backend
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<details>
+  <summary>Contenido 📝</summary>
+  <ol>
+    <li><a href="## Objetivo🎯">Objetivo🎯</a></li>
+    <li><a href="#sobre-el-proyecto">Sobre el proyecto</a></li>
+    <li><a href="#deploy-🚀">Deploy</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#diagrama-bd">Diagrama</a></li>
+    <li><a href="#instalación-en-local">Instalación</a></li>
+    <li><a href="#endpoints">Endpoints</a></li>
+    <li><a href="#futuras-funcionalidades">Futuras funcionalidades</a></li>
+    <li><a href="#contribuciones">Contribuciones</a></li>
+    <li><a href="#licencia">Licencia</a></li>
+    <li><a href="#webgrafia">Webgrafia</a></li>
+    <li><a href="#desarrollo">Desarrollo</a></li>
+    <li><a href="## Compañeros de equipo 🐱‍👤:"> Compañeros de equipo 🐱‍👤:</a></li>
+    
+  </ol>
+</details>
 
-## About Laravel
+## Objetivo🎯
+Este proyecto requería una API funcional conectada a una base de datos en la que simula una aplicación web que permite a los usuarios contactar con otros usuarios a través de salas de videojuegos con la tecnología PHP Laravel. Además, este proyecto se ha realizado en grupo para así poder trabajar herramientas de gestión de tickets (organización de tareas a través de un trello), trabajo en equipo y gestión del tiempo de forma eficiente.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Sobre el proyecto
+Decidí crear una aplicación web para ayudar a los amantes del gimnasio, que les permitiría crear y realizar un seguimiento de nuevas rutinas para sus ejercicios diarios. He visto muchas apps de este estilo pero ninguna que nos permita cambiar tan libremente las rutinas adaptandolas a nuestras necesidades.    
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Deploy 🚀
+<div align="center">
+    <a href="https://www.google.com"><strong>Url a producción </strong></a>🚀🚀🚀
+</div>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Stack
+Tecnologías utilizadas:
+<div align="center">
+<a href="https://www.mongodb.com/">
+    <img src= "https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white"/>
+</a>
+<a href="https://www.expressjs.com/">
+    <img src= "https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB"/>
+</a>
+<a href="https://nodejs.org/es/">
+    <img src= "https://img.shields.io/badge/node.js-026E00?style=for-the-badge&logo=node.js&logoColor=white"/>
+</a>
+<a href="https://developer.mozilla.org/es/docs/Web/JavaScript">
+    <img src= "https://img.shields.io/badge/javascipt-EFD81D?style=for-the-badge&logo=javascript&logoColor=black"/>
+</a>
+ </div>
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Diagrama BD
+!['imagen-db'](./images/sampleDb.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Instalación en local
+1. Clonar el repositorio
+2. ` $ npm install `
+3. Conectamos nuestro repositorio con la base de datos 
+4. ``` $ Ejecutamos las migraciones ``` 
+5. ``` $ Ejecutamos los seeders ``` 
+6. ``` $ npm run dev ``` 
+7. ...
 
-## Laravel Sponsors
+## Endpoints
+<details>
+<summary>Endpoints</summary>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- AUTH
+    - REGISTER
 
-### Premium Partners
+            POST http://localhost:3000/api/register
+        body:
+        ``` js
+            {
+                "user": "David",
+                "email": "david@david.com",
+                "password": "princes"
+            }
+        ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+    - LOGIN
 
-## Contributing
+            POST http://localhost:3000/api/login  
+        body:
+        ``` js
+            {
+                "user": "David",
+                "email": "david@david.com",
+                "password": "princes"
+            }
+        ```
+- RUTINAS
+    - RECUPERAR RUTINAS  
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+            GET http://localhost:3000/api/rutina
 
-## Code of Conduct
+    - ...
+</details>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Futuras funcionalidades
+[ ] Añadir create book  
+[ ] Añadir logs  con winston  
+[ ] Validaciones de la solicitud con express-validator  
+[ ] ...
 
-## Security Vulnerabilities
+## Contribuciones
+Las sugerencias y aportaciones son siempre bienvenidas.  
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Puedes hacerlo de dos maneras:
 
-## License
+1. Abriendo una issue
+2. Crea un fork del repositorio
+    - Crea una nueva rama  
+        ```
+        $ git checkout -b feature/nombreUsuario-mejora
+        ```
+    - Haz un commit con tus cambios 
+        ```
+        $ git commit -m 'feat: mejora X cosa'
+        ```
+    - Haz push a la rama 
+        ```
+        $ git push origin feature/nombreUsuario-mejora
+        ```
+    - Abre una solicitud de Pull Request
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Licencia
+Este proyecto se encuentra bajo licencia de "Mi Nombre"
+
+## Webgrafia:
+Para conseguir mi objetivo he recopilado información de:
+- link a repositorios 
+- link a documentacion de librerias externas
+- ...
+
+## Desarrollo:
+
+``` js
+ const developer = "datata";
+
+ console.log("Desarrollado por: " + datata);
+```  
+
+## Compañeros de equipo 🐱‍👤:
+
+- **Fernando** 
+<a href="https://github.com/FernandoCatalaMunyoz" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a> 
+
+- **Miguel**  
+<a href="https://github.com/Miguel21S" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=red" target="_blank"></a>
+
+- ***Antonio***  
+<a href="https://github.com/MR-ant1" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=green" target="_blank"></a> 
+
+- **Ana** 
+<a href="https://github.com/ariusvi" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a> 
+
+
