@@ -27,8 +27,8 @@ Route::post('/games', [GameController::class, 'createGame']); // (ruta,[controla
 Route::put('/games/{id}', [GameController::class, 'updateGame']); // (ruta,[controlardor::class,nombre funcion])
 Route::delete('/games/{id}', [GameController::class, 'deleteGame']); // (ruta,[controlardor::class,nombre funcion])
 
-Route::post('/user-room', [UserRoomController::class, 'addUser']); 
-Route::delete('/user-room/{id}', [UserRoomController::class, 'deleteUser']);
+Route::post('/user-room', [UserRoomController::class, 'addUser']); //añadimos usuario a la sala
+Route::delete('/user-room/{id}', [UserRoomController::class, 'deleteUser']); //eliminamos usuario de la sala
 
 
 
