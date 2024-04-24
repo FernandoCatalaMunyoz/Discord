@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\TryCatch;
-use Symfony\Component\Console\Input\Input;
+
 
 class UserController extends Controller
 {
 
     ////////////////       METHOD MYPROFULE      ////////////////////////
-    public function getMyProfile($id)
+    public function getMyProfile()
     {
         try {
-            $user = User::find($id);
+            $userId = auth()->user()->id;
+            $user = User::where("id", $userId)->get();
 
             if (!$user) {
                 return response()->json(
@@ -25,11 +25,10 @@ class UserController extends Controller
                     404
                 );
             }
-
             return response()->json(
                 [
                     'success' => true,
-                    'message' => "Date of the user",
+                    'message' => "User profile retrieved succesfully",
                     'data' => $user
                 ]
             );
@@ -46,21 +45,22 @@ class UserController extends Controller
     }
 
     /////////////    METHOD UPDATE   //////////////
-    public function updateUser(Request $request, $id)
+    public function updateUser(Request $request)
     {
         try {
+            $userId = auth()->user()->id;
             $validated = $request->validate([
-                'nickName' => 'required|max:25',
-                'fullName' => 'required|max:25'
+                'nickname' => 'max:25',
+                'fullname' => 'max:25'
             ]);
 
-            $user = User::find($id);
+            $user = User::find($userId);
 
-            if ($request->input('nickName')) {
-                $user->nickName = $request -> input('nickName');
+            if ($request->input('nickname')) {
+                $user->nickname = $request->input('nickname');
             }
-            if ($request->input('fullName')) {
-                $user->fullName = $request->input('fullName');
+            if ($request->input('fullname')) {
+                $user->fullname = $request->input('fullname');
             }
 
             $user->save();
@@ -86,9 +86,11 @@ class UserController extends Controller
     }
 
     ////////////////     METHOD DELETE     ///////////////
-    public function deleteUser($id){
-        try{
-            $user = User::find($id);
+    public function deleteUser()
+    {
+        try {
+            $userId = auth()->user()->id;
+            $user = User::find($userId);
             $user->delete();
             return response()->json(
                 [
