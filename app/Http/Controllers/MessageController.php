@@ -19,8 +19,8 @@ class MessageController extends Controller
                     'success' => true,
                     'message' => "Messages retrieved successfully",
                     'data' => $messages
-                ] .
-                    200
+                ],
+                200
             );
         } catch (\Throwable $th) {
             return response()->json(

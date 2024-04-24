@@ -110,10 +110,13 @@ class RoomController extends Controller
         }
     }
 
-    public function getAllRooms()
+    public function getGameRooms($game_id)
     {
         try {
-            $rooms = Room::all();
+            // $game_id = $request->input("game_id");
+            $rooms = Room::where("game_id", $game_id)->get();
+
+
             return response()->json(
                 [
                     'success' => true,

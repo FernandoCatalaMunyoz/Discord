@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserRoom;
+use App\Models\RoomUser;
 use Illuminate\Http\Request;
 
-class UserRoomController extends Controller
+class RoomUserController extends Controller
 {
-    //Funciones de los endpoints
-
     public function addUser(Request $request)
     {
         try {
@@ -17,7 +15,7 @@ class UserRoomController extends Controller
                 "room_id" => "required"
             ]);
 
-            $userRoom = new UserRoom();
+            $userRoom = new RoomUser();
             $userRoom->user_id = $request->input('user_id');
             $userRoom->room_id = $request->input('room_id');
 
@@ -46,7 +44,7 @@ class UserRoomController extends Controller
     public function deleteUser($id)
     {
         try {
-            $userRoom = UserRoom::find($id);
+            $userRoom = RoomUser::find($id);
 
             if ($userRoom == null) {
                 return response()->json(
@@ -81,5 +79,3 @@ class UserRoomController extends Controller
         }
     }
 }
-
-
