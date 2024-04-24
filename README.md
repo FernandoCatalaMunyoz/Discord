@@ -7,7 +7,7 @@
   <ol>
     <li><a href="## Objetivo🎯">Objetivo🎯</a></li>
     <li><a href="## Sobre el proyecto 📰">Sobre el proyecto 📰</a></li>
-    <li><a href="#stack">Stack</a></li>
+    <li><a href="## Stack ✨">Stack ✨</a></li>
     <li><a href="## Diagrama BD 🌐">Diagrama BD 🌐</a></li>
     <li><a href="## Instalación en local 💻"> Instalación en local 💻</a></li>
     <li><a href="#endpoints">Endpoints</a></li>
@@ -25,20 +25,30 @@ Este proyecto requería una API funcional conectada a una base de datos en la qu
 LFG Backend es una aplicación web dónde los usuarios podrán registrarse e iniciar sesión para así poder crear salas en función a una lista de videojuegos para que otros usuarios puedan unirse para conversar en dichas salas. 
 
 
-## Stack
+## Stack ✨
 Tecnologías utilizadas:
 <div align="center">
-<a href="https://www.mongodb.com/">
-    <img src= "https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white"/>
+<a href="">
+    <img src= "https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"/>
 </a>
-<a href="https://www.expressjs.com/">
-    <img src= "https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB"/>
+<a href="https:">
+    <img src= "https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"/>
 </a>
-<a href="https://nodejs.org/es/">
-    <img src= "https://img.shields.io/badge/node.js-026E00?style=for-the-badge&logo=node.js&logoColor=white"/>
+<a href="https://">
+    <img src= "https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white"/>
 </a>
-<a href="https://developer.mozilla.org/es/docs/Web/JavaScript">
-    <img src= "https://img.shields.io/badge/javascipt-EFD81D?style=for-the-badge&logo=javascript&logoColor=black"/>
+<a href="https://">
+    <img src= "https://img.shields.io/badge/Google%20Meet-00897B?style=for-the-badge&logo=google-meet&logoColor=white"/>
+</a>
+<a href="https://">
+    <img src= "https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white"/>
+</a>
+<a href="https://">
+    <img src= "https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+<a href="https://">
+    <img src= "https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white
+    "/>
 </a>
  </div>
 
