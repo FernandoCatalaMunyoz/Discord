@@ -42,7 +42,7 @@ class RoomController extends Controller
         $validated = $request->validate([
             "room_name" => "max:250",
             "room_description" => "String|max:250"
-
+            //poner validacion de que estas en esa sala
         ]);
         try {
             $room = Room::find($id);
@@ -77,7 +77,7 @@ class RoomController extends Controller
     {
         try {
             $room = Room::find($room_id);
-            $userId = $request->input("user_id");
+            $userId = auth()->user()->id;
 
             if ($userId !== $room->owner) {
                 return response()->json(
