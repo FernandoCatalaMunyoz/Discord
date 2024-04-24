@@ -18,7 +18,7 @@ class AuthController extends Controller
             $user->fullName = $request->input("fullName");
             $user->email = $request->input("email");
             $user->password = Hash::make($request->input("password"));
-
+            //VAlidaciones
             $user->save();
 
             return response()->json(
@@ -27,18 +27,17 @@ class AuthController extends Controller
                     'message' => "user created succesfully",
                     'data' => $user
                 ],
-                200
+                201
             );
         } catch (\Throwable $th) {
             return response()->json(
                 [
                     'success' => false,
                     'message' => "User cant be created",
-                    'error' => $th->getMessage() 
+                    'error' => $th->getMessage()
                 ],
                 500
             );
         }
     }
-
 }
