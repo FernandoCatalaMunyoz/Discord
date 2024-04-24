@@ -1,0 +1,136 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Room;
+use Illuminate\Http\Request;
+
+class RoomController extends Controller
+{
+    public function createRoom(Request $request, $id)
+    {
+        try {
+            $room = new Room;
+            $room->room_name = $request->input("room_name");
+            $room->room_description = $request->input("room_description");
+            $room->game_id = $request->input("game_id");
+            $room->owner = $id;
+
+            $room->save();
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => "room created succesfully",
+                    'data' => $room
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "room cant be created",
+                    'error' => $th->getMessage() // $th esun objeto del que cogemos el getter getMessage()
+                ],
+                500
+            );
+        }
+    }
+
+    public function updateRoom(Request $request, $id)
+    {
+        $validated = $request->validate([
+            "room_name" => "max:250",
+            "room_description" => "String|max:250"
+
+        ]);
+        try {
+            $room = Room::find($id);
+            if ($request->input("room_name")) {
+                $room->room_name = $request->input("room_name");
+            }
+            if ($request->input("room_description")) {
+                $room->room_description = $request->input("room_description");
+            }
+            $room->save();
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => "Room updated succesfully",
+                    'data' => $room
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "Room cant be updated",
+                    'error' => $th->getMessage() // $th esun objeto del que cogemos el getter getMessage()
+                ],
+                500
+            );
+        }
+    }
+
+    public function deleteRoom(Request $request, $room_id)
+    {
+        try {
+            $room = Room::find($room_id);
+            $userId = $request->input("user_id");
+
+            if ($userId !== $room->owner) {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'message' => "you cant remove this room",
+
+                    ],
+                    500
+                );
+            }
+            $room->delete();
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => "Room deleted succesfully",
+                    'data' => $room
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "Room cant be deleted",
+                    'error' => $th->getMessage() // $th esun objeto del que cogemos el getter getMessage()
+                ],
+                500
+            );
+        }
+    }
+
+    public function getAllRooms()
+    {
+        try {
+            $rooms = Room::all();
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => "Rooms retrieved succesfully",
+                    'data' => $rooms
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "Rooms cant be retrieved",
+                    'error' => $th->getMessage()()
+                ],
+                500
+            );
+        }
+    }
+}
