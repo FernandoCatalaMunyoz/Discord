@@ -13,8 +13,7 @@
     <li><a href="#endpoints">Endpoints</a></li>
     <li><a href="#futuras-funcionalidades">Futuras funcionalidades</a></li>
     <li><a href="## Webgrafia 👓">Webgrafia 👓</a></li>
-    <li><a href="## Compañeros de equipo 🐱‍👤:"> Compañeros de equipo 🐱‍👤:</a></li>
-    
+    <li><a href="## Compañeros de equipo 🐱‍👤:"> Compañeros de equipo 🐱‍👤:</a></li>    
   </ol>
 </details>
 
@@ -78,37 +77,91 @@ Nota: para este proyecto será necesario tener instalado en local PHP y Composer
 ## Endpoints
 <details>
 <summary>Endpoints</summary>
+Credenciales SuperAdmin:
+
+        ``` js
+            {
+                "email": "super_admin@super_admin.com",
+                "password": "123456"
+            }
+        ```
 
 - AUTH
     - REGISTER
 
-            POST http://localhost:3000/api/register
+            POST localhost:8000/api/auth/register
         body:
         ``` js
             {
-                "user": "David",
-                "email": "david@david.com",
-                "password": "princes"
+                "nickName": "Datata",
+                "fullName": "Dani Apellido", 
+                "email": "dani@dani.com",
+                "password": "princess",
             }
         ```
 
     - LOGIN
 
-            POST http://localhost:3000/api/login  
+            POST localhost:8000/api/auth/login  
         body:
         ``` js
             {
-                "user": "David",
-                "email": "david@david.com",
-                "password": "princes"
+                "email": "super_admin@super_admin.com",
+                "password": "123456"
             }
         ```
-- RUTINAS
-    - RECUPERAR RUTINAS  
 
-            GET http://localhost:3000/api/rutina
+- GAMES 
+    - CREATE GAME
 
-    - ...
+            POST localhost:8000/api/games  
+        Auth: token SupeAdmin
+        body:
+        ``` js
+            {
+                "game_name": "Genshin Impact",
+                "description": "Gachapon mundo abierto"
+                "game_image": "https://preview.redd.it/ntccsv49x1a51.png?auto=webp&s=defee6ae55163ba253a3a7fa9007e584d5087bac"
+            }
+        ```
+
+    - GET GAMES
+
+            GET localhost:8000/api/games 
+        
+    - UPDATE GAME
+
+            PUT localhost:8000/api/games/{id}
+        Auth: token SupeAdmin
+        body:
+        ``` js
+            {
+                "description": "Descripción editada"
+            }
+        ```
+
+    - UPDATE GAME
+
+            DELETE localhost:8000/api/games/{id}
+        Auth: token SupeAdmin
+
+- MESSAGES
+    - CREATE MESSAGE
+
+            POST localhost:8000/api/messages/{id}
+        Auth: token usuario logeado
+        body:
+        ``` js
+            {
+                "message": "Hola a todos",
+            }
+        ```
+    
+    - GET ROOM MESSAGES
+
+            GET localhost:8000/api/messages
+    
+
 </details>
 
 ## Futuras funcionalidades

@@ -8,7 +8,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomUserController;
 use Illuminate\Support\Facades\Route;
 
-
+//todo corregir las rutas de la tabla intermedia 
 Route::post('/user-room', [UserRoomController::class, 'addUser']); //añadimos usuario a la sala
 Route::delete('/user-room/{id}', [UserRoomController::class, 'deleteUser']); //eliminamos usuario de la sala
 
