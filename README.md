@@ -3,7 +3,7 @@
 <details>
   <summary>Contenido 📝</summary>
   <ol>
-    <li><a href="## Objetivo🎯">Objetivo🎯</a></li>
+    <li><a href="## Objetivo🎯">git Objetivo🎯</a></li>
     <li><a href="#sobre-el-proyecto">Sobre el proyecto</a></li>
     <li><a href="#deploy-🚀">Deploy</a></li>
     <li><a href="#stack">Stack</a></li>
