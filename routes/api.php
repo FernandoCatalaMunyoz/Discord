@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\RoomController;
+use App\Http\Controllers\GameController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,18 +28,24 @@ Route::post('/games', [GameController::class, 'createGame']); // (ruta,[controla
 Route::put('/games/{id}', [GameController::class, 'updateGame']); // (ruta,[controlardor::class,nombre funcion])
 Route::delete('/games/{id}', [GameController::class, 'deleteGame']); // (ruta,[controlardor::class,nombre funcion])
 
-Route::get('/messages', [MessageController::class, 'getAllMessages']); 
-
-Route::post('/messages/{room_id}', [MessageController::class, 'createMessage']); 
-
-Route::put('/messages/{id}', [MessageController::class, 'updateMessage']);
-
-Route::delete('/messages/{id}', [MessageController::class, 'deleteMessage']);
-
-Route::post('/auth/register', [AuthController::class, 'register']);
 
 
-Route::post('/rooms/{id}', [RoomController::class, 'createRoom']);
-Route::put('/rooms/{id}', [RoomController::class, 'updateRoom']);
-Route::delete('/rooms/{id}', [RoomController::class, 'deleteRoom']);
-Route::get('/rooms', [RoomController::class, 'getAllRooms']);
+
+
+
+Route::post('/taks', function (
+    Request $request
+) {
+    dump($request->input()); // asi recuperas lo qu ele envias por boy a traves del cliente
+    dump($request->input("campo1")); // asi recuperas lo qu ele envias por boy a traves del cliente del campo 1
+
+    $title = $request->input("campo1");
+
+    return 'create TASK';
+});
+Route::put('/taks{$id}', function ($id) {
+    return 'update TASK ' . $id;
+});
+Route::delete('/taks{$id}', function ($id) {
+    return 'delete TASK ' . $id;
+});
