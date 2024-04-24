@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\MessageController;
 
