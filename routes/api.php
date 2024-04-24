@@ -25,10 +25,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/auth/register', [AuthController::class, 'register']);
-Route::post('/auth/login', [AuthController::class, 'login']);
-
-
-Route::get('/users/profile', [UserController::class], 'getMyProfile');
+Route::post('/auth/login', [AuthController::class, 'login'])->middleware('superAdmin');
+Route::delete('/auth/logout', [AuthController::class, 'logOut'])->middleware('auth:sanctum');
 Route::get('/users/profile/{id}', [UserController::class], 'updateUser');
 Route::get('/users/profile/{id}', [UserController::class], 'deleteUser');
 
@@ -45,7 +43,7 @@ Route::put('/messages/{id}', [MessageController::class, 'updateMessage']);
 Route::delete('/messages/{id}', [MessageController::class, 'deleteMessage']);
 
 
-Route::post('/rooms/{id}', [RoomController::class, 'createRoom']);
+Route::post('/rooms', [RoomController::class, 'createRoom']);
 Route::put('/rooms/{id}', [RoomController::class, 'updateRoom']);
 Route::delete('/rooms/{id}', [RoomController::class, 'deleteRoom']);
 Route::get('/rooms', [RoomController::class, 'getAllRooms']);
@@ -53,3 +51,15 @@ Route::get('/rooms', [RoomController::class, 'getAllRooms']);
 
 Route::post('/user-room', [UserRoomController::class, 'addUser']);
 Route::delete('/user-room/{id}', [UserRoomController::class, 'deleteUser']);
+
+
+
+
+Route::middleware(['auth:sanctum'])->group(
+    function () {
+        Route::post('/rooms', [RoomController::class, 'createRoom']);
+        Route::put('/rooms/{id}', [RoomController::class, 'updateRoom']);
+        Route::delete('/rooms/{id}', [RoomController::class, 'deleteRoom']);
+        Route::get('/rooms', [RoomController::class, 'getAllRooms']);
+    }
+);

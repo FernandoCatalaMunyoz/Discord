@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
-    public function createRoom(Request $request, $id)
+    public function createRoom(Request $request)
     {
         try {
             $room = new Room;
             $room->room_name = $request->input("room_name");
             $room->room_description = $request->input("room_description");
             $room->game_id = $request->input("game_id");
-            $room->owner = $id;
+            $room->owner = auth()->user()->id;
 
             $room->save();
             return response()->json(

@@ -19,9 +19,9 @@ class MessageController extends Controller
                     'success' => true,
                     'message' => "Messages retrieved successfully",
                     'data' => $messages
-                ].
-                200
-                );
+                ] .
+                    200
+            );
         } catch (\Throwable $th) {
             return response()->json(
                 [
@@ -39,7 +39,7 @@ class MessageController extends Controller
         try {
             $message = new Message;
             $message->message = $request->input("message");
-            $message->user_id = $request->input("user_id");
+            $message->user_id = auth()->user()->id;
             $message->room_id = $room_id;
             $message->save();
             return response()->json(
@@ -62,7 +62,8 @@ class MessageController extends Controller
         }
     }
 
-    public function updateMessage(Request $request, $id) {
+    public function updateMessage(Request $request, $id)
+    {
 
         try {
             $validated = $request->validate([
@@ -84,7 +85,6 @@ class MessageController extends Controller
                 ],
                 200
             );
-
         } catch (\Throwable $th) {
             return response()->json(
                 [
@@ -98,28 +98,28 @@ class MessageController extends Controller
     }
 
 
-public function deleteMessage($id)
-{
-    try {
-        $message = Message::find($id);
-        $message->delete();
-        return response()->json(
-            [
-                'success' => true,
-                'message' => "Message deleted succesfully",
-                'data' => $message
-            ],
-            200
-        );
-    } catch (\Throwable $th) {
-        return response()->json(
-            [
-                'success' => false,
-                'message' => "Message cant be created",
-                'error' => $th->getMessage()
-            ],
-            500
-        );
+    public function deleteMessage($id)
+    {
+        try {
+            $message = Message::find($id);
+            $message->delete();
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => "Message deleted succesfully",
+                    'data' => $message
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "Message cant be created",
+                    'error' => $th->getMessage()
+                ],
+                500
+            );
+        }
     }
-}
 }

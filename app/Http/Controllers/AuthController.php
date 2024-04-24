@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use PhpParser\Node\Stmt\TryCatch;
+
+use function PHPUnit\Framework\returnSelf;
 
 class AuthController extends Controller
 {
@@ -131,5 +134,43 @@ class AuthController extends Controller
                 500
             );
         }
+    }
+    //RPOFILE
+
+    public function getProfile()
+    {
+        try {
+            $user = auth()->user();
+            return response()->json(
+                [
+                    "succes" => true,
+                    "message" => "Profile retrieved succesfully",
+                    "data" => $user
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "Profile cant be retrieved",
+
+                ],
+                500
+            );
+        }
+    }
+
+    public function logOut(Request $request)
+    {
+        $request()->user()->currentAccesToken()->delete();
+        return "token deleted";
+    }
+
+    public function logOutAllDevices(Request $request)
+    {
+        $request()->user()->tokens()->delete();
+        return "token deleted";
     }
 }
