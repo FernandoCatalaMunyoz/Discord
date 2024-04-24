@@ -8,11 +8,11 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class GameController extends Controller
 {
-    
+
     public function getAllGames()
     {
         try {
-            $games = Game::all(); 
+            $games = Game::all();
 
             return response()->json(
                 [
@@ -74,9 +74,9 @@ class GameController extends Controller
     {
         try {
             $validated = $request->validate([
-                "game_name" => "required|max:50",
-                "description" => "required|String",
-                "game_image" => "required"
+                "game_name" => "max:50",
+                "description" => "String",
+
             ]);
             $game = Game::find($id);
             if ($request->input('game_name')) {

@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
-    public function createRoom(Request $request, $id)
+    public function createRoom(Request $request)
     {
         try {
             $room = new Room;
             $room->room_name = $request->input("room_name");
             $room->room_description = $request->input("room_description");
             $room->game_id = $request->input("game_id");
-            $room->owner = $id;
+            $room->owner = auth()->user()->id;
 
             $room->save();
             return response()->json(
@@ -42,7 +42,7 @@ class RoomController extends Controller
         $validated = $request->validate([
             "room_name" => "max:250",
             "room_description" => "String|max:250"
-
+            //poner validacion de que estas en esa sala
         ]);
         try {
             $room = Room::find($id);
@@ -77,7 +77,7 @@ class RoomController extends Controller
     {
         try {
             $room = Room::find($room_id);
-            $userId = $request->input("user_id");
+            $userId = auth()->user()->id;
 
             if ($userId !== $room->owner) {
                 return response()->json(
@@ -110,10 +110,13 @@ class RoomController extends Controller
         }
     }
 
-    public function getAllRooms()
+    public function getGameRooms($game_id)
     {
         try {
-            $rooms = Room::all();
+            // $game_id = $request->input("game_id");
+            $rooms = Room::where("game_id", $game_id)->get();
+
+
             return response()->json(
                 [
                     'success' => true,

@@ -18,15 +18,36 @@ class RoomsSeeder extends Seeder
     {
         DB::table("rooms")->insert(
             [
-                'room_name' => 'Fornite-1',
-                'room_description' => 'Rat kids room',
+                'name' => 'Fornite-1',
+                'description' => 'Rat kids room',
                 'game_id' => 1,
                 'owner' => rand(2, 10),
                 'created_at' => now(),
                 'updated_at' => now()
 
-            ],
+            ]
+        );
+        DB::table("rooms")->insert(
+            [
+                'name' => 'Fornite-2',
+                'description' => 'Rat kids room',
+                'game_id' => 1,
+                'owner' => rand(2, 10),
+                'created_at' => now(),
+                'updated_at' => now()
 
+            ]
+        );
+        DB::table("rooms")->insert(
+            [
+                'name' => 'Fornite-3',
+                'description' => 'Rat kids room',
+                'game_id' => 2,
+                'owner' => rand(2, 10),
+                'created_at' => now(),
+                'updated_at' => now()
+
+            ]
         );
     }
 }
