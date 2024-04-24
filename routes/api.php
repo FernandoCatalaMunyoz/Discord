@@ -8,10 +8,6 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomUserController;
 use Illuminate\Support\Facades\Route;
 
-//todo corregir las rutas de la tabla intermedia 
-Route::post('/user-room', [UserRoomController::class, 'addUser']); //añadimos usuario a la sala
-Route::delete('/user-room/{id}', [UserRoomController::class, 'deleteUser']); //eliminamos usuario de la sala
-
 
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
@@ -32,6 +28,8 @@ Route::middleware(['auth:sanctum'])->group(
         Route::put('/rooms/{room_id}', [RoomController::class, 'updateRoom']);
         Route::delete('/rooms/{id}', [RoomController::class, 'deleteRoom']);
         Route::get('/rooms/{game_id}', [RoomController::class, 'getGameRooms']);
+        Route::post('/rooms/{room_id}/join', [RoomController::class, 'joinRoom']);
+        Route::post('/rooms/{room_id}/leave', [RoomController::class, 'leaveRoom']);
     }
 );
 
