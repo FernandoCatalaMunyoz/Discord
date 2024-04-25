@@ -114,7 +114,7 @@ class RoomController extends Controller
     {
         try {
             // $game_id = $request->input("game_id");
-            $rooms = Room::where("game_id", $game_id)->get();
+            $rooms = Room::where("game_id", $game_id)->get()->paginate(15);
 
 
             return response()->json(

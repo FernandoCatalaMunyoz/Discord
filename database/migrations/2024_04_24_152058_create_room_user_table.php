@@ -20,6 +20,8 @@ return new class extends Migration
             $table->foreign("room_id")->references("id")->on("rooms")->onUpdate("cascade")->onDelete("cascade");
             $table->foreign("user_id")->references("id")->on("users")->onUpdate("cascade")->onDelete("cascade");
             $table->timestamps();
+
+            $table->unique(['room_id', 'user_id']);
         });
     }
 

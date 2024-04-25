@@ -12,7 +12,10 @@ class GameController extends Controller
     public function getAllGames()
     {
         try {
-            $games = Game::all();
+            // $limit = $request->query('limit',10);
+            // $games =Game::paginate($limit)
+            $games = Game::all()->simplepaginate(15);
+
 
             return response()->json(
                 [

@@ -29,7 +29,7 @@ Route::middleware(['auth:sanctum'])->group(
         Route::delete('/rooms/{id}', [RoomController::class, 'deleteRoom']);
         Route::get('/rooms/{game_id}', [RoomController::class, 'getGameRooms']);
         Route::post('/rooms/{room_id}/join', [RoomController::class, 'joinRoom']);
-        Route::post('/rooms/{room_id}/leave', [RoomController::class, 'leaveRoom']);
+        Route::delete('/rooms/{room_id}/leave', [RoomController::class, 'leaveRoom']);
     }
 );
 

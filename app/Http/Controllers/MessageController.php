@@ -12,7 +12,7 @@ class MessageController extends Controller
     public function getAllMessages()
     {
         try {
-            $messages = Message::all();
+            $messages = Message::all()->paginate(15);
 
             return response()->json(
                 [
