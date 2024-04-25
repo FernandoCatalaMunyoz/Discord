@@ -9,9 +9,6 @@ use App\Http\Controllers\RoomUserController;
 use Illuminate\Support\Facades\Route;
 
 
-
-
-
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::delete('/auth/logout', [AuthController::class, 'logOut'])->middleware('auth:sanctum');
@@ -31,6 +28,8 @@ Route::middleware(['auth:sanctum'])->group(
         Route::put('/rooms/{room_id}', [RoomController::class, 'updateRoom']);
         Route::delete('/rooms/{id}', [RoomController::class, 'deleteRoom']);
         Route::get('/rooms/{game_id}', [RoomController::class, 'getGameRooms']);
+        Route::post('/rooms/{room_id}/join', [RoomController::class, 'joinRoom']);
+        Route::post('/rooms/{room_id}/leave', [RoomController::class, 'leaveRoom']);
     }
 );
 

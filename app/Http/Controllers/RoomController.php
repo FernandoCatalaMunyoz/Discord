@@ -136,4 +136,58 @@ class RoomController extends Controller
             );
         }
     }
+
+    public function joinRoom(Request $request, $id)
+
+    {
+        try {
+            $room = Room::find($id);
+            $userId = auth()->user()->id;
+            $room->users()->attach($userId);
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => "User joined succesfully",
+                    'data' => $room
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "User can't join",
+                    'error' => $th->getMessage()()
+                ],
+                500
+            );
+        }
+    }
+
+    public function leaveRoom(Request $request, $id)
+
+    {
+        try {
+            $room = Room::find($id);
+            $userId = auth()->user()->id;
+            $room->users()->detach($userId);
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => "User left succesfully",
+                    'data' => $room
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "User can't left",
+                    'error' => $th->getMessage()()
+                ],
+                500
+            );
+        }
+    }
 }
