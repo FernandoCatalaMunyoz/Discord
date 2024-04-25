@@ -50,6 +50,3 @@ Route::middleware(['auth:sanctum'])->group(
         Route::delete('/games/{id}', [GameController::class, 'deleteGame'])->middleware("SuperAdmin");
     }
 );
-
-Route::post('/user-room', [RoomUserController::class, 'addUser']);
-Route::delete('/user-room/{id}', [RoomUserController::class, 'deleteUser']);
