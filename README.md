@@ -251,7 +251,7 @@ Credenciales SuperAdmin:
 
     -   LEAVE ROOM
 
-        POST localhost:8000/api/rooms/{room_id}/leave
+        DELETE localhost:8000/api/rooms/{room_id}/leave
         Auth: token usuario logeado
 
 </details>
