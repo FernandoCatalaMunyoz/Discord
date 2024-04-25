@@ -10,8 +10,8 @@
     <li><a href="## Stack ✨">Stack ✨</a></li>
     <li><a href="## Diagrama BD 🌐">Diagrama BD 🌐</a></li>
     <li><a href="## Instalación en local 💻"> Instalación en local 💻</a></li>
-    <li><a href="#endpoints">Endpoints</a></li>
-    <li><a href="#futuras-funcionalidades">Futuras funcionalidades</a></li>
+    <li><a href="## Endpoints 🎢">Endpoints 🎢</a></li>
+    <li><a href="## Futuras funcionalidades ✅">Futuras funcionalidades ✅</a></li>
     <li><a href="## Webgrafia 👓">Webgrafia 👓</a></li>
     <li><a href="## Compañeros de equipo 🐱‍👤:"> Compañeros de equipo 🐱‍👤:</a></li>    
   </ol>
@@ -66,15 +66,15 @@ Nota: para este proyecto será necesario tener instalado en local PHP y Composer
 2. Instalamos dependencias
 ` $ composer install `
 3. Conectamos nuestro repositorio con la base de datos, para ello creamos el archivo .env copiando los datos de .env.example y rellenamos los campos con la conexión a nuestra base de datos en local.
-4. Ejecutamos las migraciones
- ``` $ php artisan migrate ``` 
-5. Ejecutamos los seeders
-``` $ php artisan db:seed``` 
-6. Iniciamos el servidor
+4. Iniciamos el servidor
 ``` $ php artisan serve ``` 
-7. ...
+5. Ejecutamos las migraciones
+ ``` $ php artisan migrate ``` 
+6. Ejecutamos los seeders
+``` $ php artisan db:seed``` 
 
-## Endpoints
+
+## Endpoints 🎢
 <details>
 <summary>Endpoints</summary>
 Credenciales SuperAdmin:
@@ -160,15 +160,73 @@ Credenciales SuperAdmin:
     - GET ROOM MESSAGES
 
             GET localhost:8000/api/messages
+
+    - UPDATE MESSAGE
+
+            PUT localhost:8000/api/messages/{id}
+        Auth: token usuario logeado
+        body:
+        ``` js
+            {
+                "message": "Adiós a todos",
+            }
+        ```
+   - DELETE MESSAGE
+
+            DELETE localhost:8000/api/messages/{id}
+        Auth: token super_admin
+
+- ROOMS
+    - CREATE ROOM
+
+            POST localhost:8000/api/rooms
+        Auth: token usuario logeado
+        body:
+        ``` js
+            {
+                "room_name": "TOP Tier",
+                "room_description" : "equipo competitivo",
+                "game_id":"1"
+            }
+        ```
+
+    - UPDATE ROOM
+
+            PUT localhost:8000/api/rooms/{id}
+        Auth: token usuario logeado
+        body:
+        ``` js
+            {
+                "room_name": "Fnatic",
+            }
+        ```
     
+    - DELETE ROOM
+
+            DELETE localhost:8000/api/rooms/{id}
+        Auth: token usuario logeado
+
+    - GET GAMEROOM
+
+        GET localhost:8000/api/rooms/{game_id}
+        Auth: token usuario logeado
+
+
+     - JOIN ROOM
+
+        POST localhost:8000/api/rooms/{room_id}/join
+        Auth: token usuario logeado
+
+     - LEAVE ROOM
+
+        POST localhost:8000/api/rooms/{room_id}/leave
+        Auth: token usuario logeado
 
 </details>
 
-## Futuras funcionalidades
-[ ] Añadir create book  
-[ ] Añadir logs  con winston  
-[ ] Validaciones de la solicitud con express-validator  
-[ ] ...
+## Futuras funcionalidades ✅
+[ ] Aplicación de validaciones 
+
 
 
 ## Webgrafia 👓
