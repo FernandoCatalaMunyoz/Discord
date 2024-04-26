@@ -8,12 +8,14 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class GameController extends Controller
 {
-    //Creamos aqui las funciones de cada empoint
 
-    public function getAllGames()
+    public function getAllGames(Request $request)
     {
         try {
-            $games = Game::all(); // devuelve coleccion con todos los registros de Games
+            $limit = $request->query('limit', 2);
+            $games = Game::paginate($limit);
+
+
 
             return response()->json(
                 [
@@ -34,11 +36,11 @@ class GameController extends Controller
             );
         }
     }
-    public function createGAme(Request $request)
+    public function createGame(Request $request)
     {
         try {
             $validated = $request->validate([
-                "game_name" => "required|max:50",
+                "name" => "required|max:50",
                 "description" => "required|String",
                 "game_image" => "required"
             ]);
@@ -46,7 +48,7 @@ class GameController extends Controller
 
 
             $game = new Game;
-            $game->game_name = $request->input('game_name');
+            $game->name = $request->input('name');
             $game->description = $request->input('description');
             $game->game_image = $request->input('game_image');
 
@@ -75,9 +77,9 @@ class GameController extends Controller
     {
         try {
             $validated = $request->validate([
-                "game_name" => "required|max:50",
-                "description" => "required|String",
-                "game_image" => "required"
+                "game_name" => "max:50",
+                "description" => "String",
+
             ]);
             $game = Game::find($id);
             if ($request->input('game_name')) {

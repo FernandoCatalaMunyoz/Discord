@@ -20,15 +20,25 @@ class UserSeeder extends Seeder
     {
         DB::table("users")->insert(
             [
-                'nickName' => 'super_admin',
-                'fullName' => 'super_admin',
+                'nickname' => 'super_admin',
+                'fullname' => 'super_admin',
                 'email' => 'super_admin@super_admin.com',
                 'password' => Hash::make('123456'),
                 'role' => 'super_admin',
                 'created_at' => now(),
                 'updated_at' => now() // ver si funciona bien el updated
             ],
-
+        );
+        DB::table("users")->insert(
+            [
+                'nickname' => 'user',
+                'fullname' => 'user',
+                'email' => 'user@user.com',
+                'password' => Hash::make('123456'),
+                'role' => 'user',
+                'created_at' => now(),
+                'updated_at' => now() // ver si funciona bien el updated
+            ],
         );
     }
 }

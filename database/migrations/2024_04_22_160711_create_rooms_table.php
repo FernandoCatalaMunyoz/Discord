@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->string("room_name");
-            $table->string("room_description", 250);;
+            $table->string("name");
+            $table->string("description", 250);
             $table->unsignedBigInteger("game_id");
             $table->unsignedBigInteger("owner");
             $table->timestamps();
