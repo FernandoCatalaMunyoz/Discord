@@ -9,12 +9,12 @@ use PhpParser\Node\Stmt\TryCatch;
 class GameController extends Controller
 {
 
-    public function getAllGames()
+    public function getAllGames(Request $request)
     {
         try {
-            // $limit = $request->query('limit',10);
-            // $games =Game::paginate($limit)
-            $games = Game::all()->simplepaginate(15);
+            $limit = $request->query('limit', 2);
+            $games = Game::paginate($limit);
+            // $games = Game::all()->simplepaginate(15);
 
 
             return response()->json(
