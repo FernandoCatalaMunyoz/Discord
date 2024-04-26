@@ -35,7 +35,7 @@ Route::middleware(['auth:sanctum'])->group(
 
 Route::middleware(['auth:sanctum'])->group(
     function () {
-        Route::get('/messages', [MessageController::class, 'getAllMessages']);
+        Route::get('/messages/{id}', [MessageController::class, 'getAllMessages']);
         Route::post('/messages/{id}', [MessageController::class, 'createMessage']);
         Route::put('/messages/{id}', [MessageController::class, 'updateMessage']);
         Route::delete('/messages/{id}', [MessageController::class, 'deleteMessage'])->middleware("SuperAdmin");

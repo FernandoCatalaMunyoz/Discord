@@ -14,7 +14,7 @@ class GameController extends Controller
         try {
             $limit = $request->query('limit', 2);
             $games = Game::paginate($limit);
-            // $games = Game::all()->simplepaginate(15);
+
 
 
             return response()->json(

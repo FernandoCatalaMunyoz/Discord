@@ -9,10 +9,13 @@ use App\Models\Message;
 class MessageController extends Controller
 {
 
-    public function getAllMessages()
+    public function getAllMessages(Request $request, $id)
     {
         try {
-            $messages = Message::all()->paginate(15);
+
+            $limit = $request->query('limit', 2);
+            $messages = Message::where('room_id', $id)->paginate($limit);
+
 
             return response()->json(
                 [
