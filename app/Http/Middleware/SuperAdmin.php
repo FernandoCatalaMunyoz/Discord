@@ -23,7 +23,7 @@ class SuperAdmin
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "NO PUEDES PASAAAAAR!!!!"
+                    "message" => "You dont have credentials"
 
                 ],
                 403

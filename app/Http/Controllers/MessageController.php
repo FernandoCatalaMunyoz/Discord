@@ -9,7 +9,7 @@ use App\Models\Message;
 class MessageController extends Controller
 {
 
-    public function getAllMessages(Request $request, $id)
+    public function getRoomMessages(Request $request, $id)
     {
         try {
 

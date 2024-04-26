@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Room;
+use App\Models\RoomUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -111,4 +113,60 @@ class UserController extends Controller
             );
         }
     }
+    public function getAllUsers(Request $request)
+    {
+        try {
+            $limit = $request->query('limit', 10);
+            $users = User::paginate($limit);
+
+
+
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => "Users retrieved succesfully",
+                    'data' => $users
+                ],
+                200
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "Users cant be retrieved",
+                    'error' => $th->getMessage()
+                ],
+                500
+            );
+        }
+    }
+
+    // public function getRoomUsers(Request $request, $room_id)
+    // {
+    //     try {
+
+    //         // $limit = $request->query('limit', 2);
+    //         // $room = Room::find($room_id);
+    //         $users = RoomUser::where('room_id', $room_id)->get();
+
+
+    //         return response()->json(
+    //             [
+    //                 'success' => true,
+    //                 'message' => "Room users retrieved successfully",
+    //                 'data' => $users
+    //             ],
+    //             200
+    //         );
+    //     } catch (\Throwable $th) {
+    //         return response()->json(
+    //             [
+    //                 'success' => false,
+    //                 'message' => "Users cant retrieved successfully",
+    //                 'error' => $th->getMessage()
+    //             ],
+    //             500
+    //         );
+    //     }
+    // }
 }

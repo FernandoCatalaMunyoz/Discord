@@ -6,7 +6,10 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomUserController;
+
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Middleware\SuperAdmin;
 
 
 Route::post('/auth/register', [AuthController::class, 'register']);
@@ -16,9 +19,11 @@ Route::delete('/auth/logout', [AuthController::class, 'logOut'])->middleware('au
 
 Route::middleware(['auth:sanctum'])->group(
     function () {
-        Route::put('/users', [UserController::class, 'updateUser']);
-        Route::delete('/users', [UserController::class, 'deleteUser']);
+        Route::put('/users/profile', [UserController::class, 'updateUser']);
+        Route::delete('/users/profile', [UserController::class, 'deleteUser']);
         Route::get('/users/profile', [UserController::class, 'getMyProfile']);
+        Route::get('/users', [UserController::class, 'getAllUsers'])->middleware('SuperAdmin');
+        // Route::get('/users/{room_id}', [UserController::class, 'getRoomUsers']);
     }
 );
 
@@ -35,16 +40,16 @@ Route::middleware(['auth:sanctum'])->group(
 
 Route::middleware(['auth:sanctum'])->group(
     function () {
-        Route::get('/messages/{id}', [MessageController::class, 'getAllMessages']);
+        Route::get('/messages/{id}', [MessageController::class, 'getRoomMessages']);
         Route::post('/messages/{id}', [MessageController::class, 'createMessage']);
         Route::put('/messages/{id}', [MessageController::class, 'updateMessage']);
-        Route::delete('/messages/{id}', [MessageController::class, 'deleteMessage'])->middleware("SuperAdmin");
+        Route::delete('/messages/{id}', [MessageController::class, 'deleteMessage'])->middleware('SuperAdmin');
     }
 );
 Route::middleware(['auth:sanctum'])->group(
     function () {
         Route::get('/games', [GameController::class, 'getAllGames']);
-        Route::post('/games', [GameController::class, 'createGame'])->middleware("SuperAdmin");
+        Route::post('/games', [GameController::class, 'createGame'])->middleware('SuperAdmin');
         Route::put('/games/{id}', [GameController::class, 'updateGame'])->middleware("SuperAdmin");
         Route::delete('/games/{id}', [GameController::class, 'deleteGame'])->middleware("SuperAdmin");
     }

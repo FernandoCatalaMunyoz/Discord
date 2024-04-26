@@ -5,15 +5,15 @@
 <details>
   <summary>Contenido 📝</summary>
   <ol>
-    <li><a href="## Objetivo🎯">Objetivo🎯</a></li>
-    <li><a href="## Sobre el proyecto 📰">Sobre el proyecto 📰</a></li>
-    <li><a href="## Stack ✨">Stack ✨</a></li>
-    <li><a href="## Diagrama BD 🌐">Diagrama BD 🌐</a></li>
-    <li><a href="## Instalación en local 💻"> Instalación en local 💻</a></li>
-    <li><a href="## Endpoints 🎢">Endpoints 🎢</a></li>
-    <li><a href="## Futuras funcionalidades ✅">Futuras funcionalidades ✅</a></li>
-    <li><a href="## Webgrafia 👓">Webgrafia 👓</a></li>
-    <li><a href="## Compañeros de equipo 🐱‍👤:"> Compañeros de equipo 🐱‍👤:</a></li>    
+    <li><a href="#Objetivo🎯">Objetivo🎯</a></li>
+    <li><a href="#Sobre-el-proyecto📰">Sobre el proyecto 📰</a></li>
+    <li><a href="##Stack ✨">Stack ✨</a></li>
+    <li><a href="##Diagrama BD 🌐">Diagrama BD 🌐</a></li>
+    <li><a href="##Instalaciónenlocal 💻"> Instalación en local 💻</a></li>
+    <li><a href="##Endpoints 🎢">Endpoints 🎢</a></li>
+    <li><a href="##Futurasfuncionalidades ✅">Futuras funcionalidades ✅</a></li>
+    <li><a href="##Webgrafia 👓">Webgrafia 👓</a></li>
+    <li><a href="##Compañerosdeequipo 🐱‍👤:"> Compañeros de equipo 🐱‍👤:</a></li>    
   </ol>
 </details>
 
@@ -115,7 +115,6 @@ Credenciales SuperAdmin:
 
                 POST localhost:8000/api/auth/login
 
-    ¡ç
     body:
 
             ```js
@@ -125,13 +124,44 @@ Credenciales SuperAdmin:
                 }
             ```
 
+-   USERS
+
+    -   UPDATE PROFILE
+
+              PUT localhost:8000/api/users/profile
+
+        Auth: token usuario logeado
+        body:
+
+        ```js
+            {
+                "fullname": "Fnatic",
+            }
+        ```
+
+    -   DELETE PROFILE
+
+              DELETE localhost:8000/api/users/profile
+
+        Auth: token usuario logeado
+
+    -   GET PROFILE
+
+        GET localhost:8000/api/users/profile
+        Auth: token usuario logeado
+
+    -   GET ALL USERS
+
+        GET localhost:8000/api/users
+        Auth: token super_admin
+
 -   GAMES
 
     -   CREATE GAME
 
               POST localhost:8000/api/games
 
-        Auth: token SupeAdmin
+        Auth: token SuperAdmin
         body:
 
         ```js
@@ -150,7 +180,7 @@ Credenciales SuperAdmin:
 
               PUT localhost:8000/api/games/{id}
 
-        Auth: token SupeAdmin
+        Auth: token SuperAdmin
         body:
 
         ```js
@@ -159,11 +189,11 @@ Credenciales SuperAdmin:
             }
         ```
 
-    -   UPDATE GAME
+    -   DELETE GAME
 
               DELETE localhost:8000/api/games/{id}
 
-        Auth: token SupeAdmin
+        Auth: token SuperAdmin
 
 -   MESSAGES
 
@@ -258,7 +288,8 @@ Credenciales SuperAdmin:
 
 ## Futuras funcionalidades ✅
 
-[ ] Aplicación de validaciones
+[✔] Aplicación de validaciones
+[ ] Endpoint traer usuarios de una sala
 
 ## Webgrafia 👓
 

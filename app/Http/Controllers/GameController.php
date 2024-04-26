@@ -40,7 +40,7 @@ class GameController extends Controller
     {
         try {
             $validated = $request->validate([
-                "game_name" => "required|max:50",
+                "name" => "required|max:50",
                 "description" => "required|String",
                 "game_image" => "required"
             ]);
@@ -48,7 +48,7 @@ class GameController extends Controller
 
 
             $game = new Game;
-            $game->game_name = $request->input('game_name');
+            $game->name = $request->input('name');
             $game->description = $request->input('description');
             $game->game_image = $request->input('game_image');
 
