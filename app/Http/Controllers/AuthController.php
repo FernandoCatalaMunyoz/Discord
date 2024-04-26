@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use PhpParser\Node\Stmt\TryCatch;
 
-use function PHPUnit\Framework\returnSelf;
 
 class AuthController extends Controller
 {
@@ -20,15 +18,15 @@ class AuthController extends Controller
         try {
             Log::info("REGISTERING USER");
             $user = new User;
-            $user->nickName = $request->input("nickName");
-            $user->fullName = $request->input("fullName");
+            $user->nickName = $request->input("nickname");
+            $user->fullName = $request->input("fullname");
             $user->email = $request->input("email");
             $user->password = Hash::make($request->input("password"));
             //VAlidaciones
 
             $validator = Validator::make($request->all(), [
-                'nickName' => 'required|unique:users|max:50',
-                'email' => 'required|unique:users', //poner validacion regex
+                'nickname' => 'required|unique:users|max:50',
+                'email' => 'required|unique:users|regex:/^.+@.+$/i', //poner validacion regex
                 'password' => 'required|min:4|max:10'
             ]);
 
